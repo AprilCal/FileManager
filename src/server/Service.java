@@ -4,9 +4,22 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+/**
+ * Server Thread
+ * wait for connection
+ * @author AprilCal
+ */
 public class Service extends ServerSocket implements Runnable
 {
 	private static Service instance=null;
+	int max_connect_number=7;
+	int cnt_connect_number=0;
+	/**Service is a singleton
+	 * return a SingleInstance.lazy initialization
+	 * create a singleton when it is used
+	 * @return Service
+	 * @throws IOException
+	 */
 	public static Service getService() throws IOException
 	{
 		if(instance==null)
@@ -15,13 +28,17 @@ public class Service extends ServerSocket implements Runnable
 		}
 		return instance;
 	}
-	int max_connect_number=7;
-	int cnt_connect_number=0;
+	
 	private Service(int port, int backlog) throws IOException 
 	{
 		super(port, backlog);
 	}
 
+	/**
+	 * when there comes a user then create a new thread
+	 * It will also determine if the current number of 
+	 * connections exceeds the maximum number of connections
+	 */
 	@Override
 	public void run() 
 	{
