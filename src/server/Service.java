@@ -7,6 +7,7 @@ import java.net.Socket;
 /**
  * Server Thread
  * wait for connection
+ * it is a singleton
  * @author AprilCal
  */
 public class Service extends ServerSocket implements Runnable
