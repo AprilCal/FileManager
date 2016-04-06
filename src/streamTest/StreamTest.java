@@ -24,6 +24,7 @@ public class StreamTest
 			BufferedInputStream bis=new BufferedInputStream(new FileInputStream(f));
 			
 			byte[] binfo=new byte[1024];
+			@SuppressWarnings("unused")
 			int len;
 			while((len=bis.read(binfo))>0)
 			{
