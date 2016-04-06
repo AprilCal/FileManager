@@ -23,18 +23,14 @@ public class StreamTest
 			BufferedOutputStream bos=new BufferedOutputStream(new FileOutputStream(f2));
 			BufferedInputStream bis=new BufferedInputStream(new FileInputStream(f));
 			
-			String info ="";
-			String single;
 			byte[] binfo=new byte[1024];
 			int len;
 			while((len=bis.read(binfo))>0)
 			{
-				single=new String(binfo,0,len);
-				info=info+single;
-				
+				bos.write(binfo);
 			}
-			bos.write(info.getBytes());
-			bos.flush();
+			
+//			bos.flush();
 			bos.close();
 			bis.close();		
 		}
