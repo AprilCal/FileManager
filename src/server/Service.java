@@ -62,7 +62,7 @@ public class Service extends ServerSocket implements Runnable
          }
          catch (IOException e)
          {
-         	e.printStackTrace();
+//         	e.printStackTrace();
          }
          finally 
          {
